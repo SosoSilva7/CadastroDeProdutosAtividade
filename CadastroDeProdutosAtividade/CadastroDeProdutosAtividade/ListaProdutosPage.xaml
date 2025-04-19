@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CadastroDeProdutosAtividade"
+             x:Class="CadastroDeProdutosAtividade.ListaProdutosPage"
+             BackgroundColor="#f9f9f9"
+            NavigationPage.HasNavigationBar="False"
+            Shell.NavBarIsVisible="False"
+             Title="ListaProdutosPage">
+    <ScrollView>
+        <VerticalStackLayout Spacing="15"
+                          VerticalOptions="CenterAndExpand"
+                          HorizontalOptions="Center">
+
+            <!-- Título -->
+            <Label Text="📋 Lista de Produtos"
+                FontSize="28"
+                FontAttributes="Bold"
+                TextColor="#c9345c"
+                HorizontalOptions="Center"
+                Margin="0,0,0,10"/>
+
+            <Picker
+             x:Name="filtroCategoriaPicker"
+             Title="Filtrar por Categoria" 
+             SelectedIndexChanged="FiltrarPorCategoria">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Todas</x:String>
+                        <x:String>Alimentos</x:String>
+                        <x:String>Eletrônicos</x:String>
+                        <x:String>Vestuário</x:String>
+                        <x:String>Outros</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <!-- Lista -->
+            <ListView x:Name="produtosListView"
+                   HasUnevenRows="True"
+                   SeparatorVisibility="None"
+                   WidthRequest="340"
+                   BackgroundColor="Transparent">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="local:Produto">
+                        <ViewCell>
+                            <Frame BackgroundColor="White"
+                                CornerRadius="15"
+                                Padding="15"
+                                Margin="0,5"
+                                HasShadow="True"
+                                BorderColor="#c9345c">
+                                <VerticalStackLayout Spacing="5">
+                                    <Label Text="{Binding Nome}"
+                                        FontAttributes="Bold"
+                                        FontSize="18"
+                                        TextColor="#333"/>
+
+                                    <Label Text="{Binding PrecoFormatado}"
+                                        TextColor="Green"
+                                        FontSize="14"/>
+
+                                    <Label Text="Descrição:"
+                                        FontAttributes="Bold"
+                                        FontSize="13"
+                                        TextColor="#666"/>
+                                    <Label Text="{Binding Descricao}"
+                                        FontSize="13"
+                                        TextColor="#444"/>
+
+                                    <Label Text="Validade:"
+                                        FontAttributes="Bold"
+                                        FontSize="13"
+                                        TextColor="#666"/>
+
+                                    <Label Text="{Binding ValidadeFormatada}" FontSize="13" TextColor="#444">
+                                        <Label.Triggers>
+                                            <DataTrigger TargetType="Label" Binding="{Binding EstaVencido}" Value="True">
+                                                <Setter Property="TextColor" Value="Red" />
+                                            </DataTrigger>
+                                        </Label.Triggers>
+                                    </Label>
+
+
+                                    <Label Text="Categoria:"
+                                        FontAttributes="Bold"
+                                        FontSize="13"
+                                        TextColor="#666"/>
+                                    <Label Text="{Binding Categoria}"
+                                        FontSize="13"
+                                        TextColor="#444"/>
+                                </VerticalStackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!--botão de voltat-->
+            <Button Text="⬅ Voltar ao Início"
+     BackgroundColor="#c9345c"
+     TextColor="White"
+     FontAttributes="Bold"
+     CornerRadius="10"
+     WidthRequest="250"
+     HeightRequest="45"
+     Clicked="Voltar_Clicked"
+     Margin="0,20,0,0"/>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+</ContentPage>

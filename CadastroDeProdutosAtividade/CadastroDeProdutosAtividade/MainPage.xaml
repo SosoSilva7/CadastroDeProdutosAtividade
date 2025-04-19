@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False"
+             x:Class="CadastroDeProdutosAtividade.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout VerticalOptions="CenterAndExpand"
+         HorizontalOptions="Center">
+
+            <!-- Card -->
+            <Frame BackgroundColor="White"
+                CornerRadius="20"
+                Padding="25"
+                HasShadow="True"
+                WidthRequest="400"
+                HorizontalOptions="Center">
+
+                <VerticalStackLayout Spacing="15">
+
+                    <!-- Título -->
+                    <Label Text="🛒 Cadastro de Produtos"
+                        FontSize="28"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        TextColor="#c9345c"
+                        Margin="0,0,0,10"/>
+                    <Label Text="*Sofia e Isabella*" FontSize="12" TextColor="#c9345c" FontAttributes="Bold" HorizontalOptions="Center"/>
+
+                    <!-- Entries -->
+                    <Frame CornerRadius="10" Padding="5" BackgroundColor="#f2f2f2" HasShadow="False">
+                        <Entry x:Name="nomeEntry"
+                            Placeholder="Nome do Produto"
+                            PlaceholderColor="#c9345c"
+                            BackgroundColor="Transparent"
+                            TextColor="#333"/>
+                    </Frame>
+
+                    <Frame CornerRadius="10" Padding="5" BackgroundColor="#f2f2f2" HasShadow="False">
+                        <Entry x:Name="precoEntry"
+                            Placeholder="Preço"
+                            PlaceholderColor="#c9345c"
+                            Keyboard="Numeric"
+                            BackgroundColor="Transparent"
+                            TextColor="#333"/>
+                    </Frame>
+
+                    <Frame CornerRadius="10" Padding="5" BackgroundColor="#f2f2f2" HasShadow="False">
+                        <Entry x:Name="descriEntry"
+                            Placeholder="Descrição do Produto"
+                            PlaceholderColor="#c9345c"
+                            BackgroundColor="Transparent"
+                            TextColor="#333"/>
+                    </Frame>
+
+                    <Frame CornerRadius="10" Padding="5" BackgroundColor="#f2f2f2" HasShadow="False">
+                        <Entry x:Name="categoriaEntry"
+                            Placeholder="Categoria"
+                            PlaceholderColor="#c9345c"
+                            BackgroundColor="Transparent"
+                            TextColor="#333"/>
+                    </Frame>
+                    
+                    <!-- Validade -->
+                    <Label Text="Validade (opcional)"
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        TextColor="#c9345c"
+                    />
+                    <DatePicker x:Name="validadePicker"
+                 TextColor="#c9345c"
+                 Format="dd/MM/yyyy"
+                 Date="{x:Static sys:DateTime.Today}"
+                 DateSelected="ValidadePicker_DateSelected"
+                 BackgroundColor="#f2f2f2" />
+
+                    <!-- Botões -->
+                    <Button Text="Adicionar Produto"
+                         Clicked="AdicionarProduto_Clicked"
+                         BackgroundColor="#c9345c"
+                         TextColor="White"
+                         CornerRadius="10"
+                         HeightRequest="45"/>
+
+                    <Button Text="Ver Lista de Produtos"
+                         Clicked="IrParaLista_Clicked"
+                         BackgroundColor="#c9345c"
+                         TextColor="White"
+                         CornerRadius="10"
+                         HeightRequest="45"/>
+
+                    <!-- Mensagem -->
+                    <Label x:Name="mensagemLabel"
+                        FontSize="14"
+                        TextColor="Green"
+                        HorizontalTextAlignment="Center"
+                        Margin="0,10,0,0"/>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
