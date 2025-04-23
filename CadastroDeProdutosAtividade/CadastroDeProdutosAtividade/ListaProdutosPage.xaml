@@ -22,7 +22,8 @@
 
             <Picker
              x:Name="filtroCategoriaPicker"
-             Title="Filtrar por Categoria" 
+             Title="Filtrar por Categoria 🔻" 
+             HorizontalOptions="Center"
              SelectedIndexChanged="FiltrarPorCategoria">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">

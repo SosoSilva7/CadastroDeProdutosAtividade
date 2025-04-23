@@ -77,7 +77,7 @@
                  BackgroundColor="#f2f2f2" />
 
                     <!-- Botões -->
-                    <Button Text="Adicionar Produto"
+                    <Button Text="Adicionar Produto +"
                          Clicked="AdicionarProduto_Clicked"
                          BackgroundColor="#c9345c"
                          TextColor="White"
