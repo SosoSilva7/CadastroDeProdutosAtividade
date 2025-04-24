@@ -26,6 +26,17 @@ public partial class ListaProdutosPage : ContentPage
             // lista dos produtos ordenada pela validade
             produtosListView.ItemsSource = MainPage.Produtos.OrderBy(p => p.Validade).ToList();
         }
+
+        else if (categoriaSelecionada == "Outros")
+        {
+            //se a categoria for outros, qualquer coisa que não seja as categorias padrão vai contar como outros
+            var categoriasPadrao = new List<string> { "Alimentos", "Eletrônicos", "Vestuário" };
+
+            produtosListView.ItemsSource = MainPage.Produtos
+                .Where(p => !categoriasPadrao.Contains(p.Categoria))
+                .OrderBy(p => p.Validade)
+                .ToList();
+        }
         else
         {
             produtosListView.ItemsSource = MainPage.Produtos
