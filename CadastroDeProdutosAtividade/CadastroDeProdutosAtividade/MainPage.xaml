@@ -75,7 +75,18 @@
                  Date="{x:Static sys:DateTime.Today}"
                  DateSelected="ValidadePicker_DateSelected"
                  BackgroundColor="#f2f2f2" />
-
+                    
+                    <!--Foto-->
+                    <Button Text="Selecionar Imagem" Clicked="SelecionarImagem_Clicked" TextColor="#c9345c" BackgroundColor="#f2f2f2" BorderColor="#c9345c"/>
+                    <Frame BackgroundColor="White"
+                        CornerRadius="20"
+                        Padding="25"
+                        HasShadow="True"
+                        WidthRequest="150"
+                        HeightRequest="150"
+                        HorizontalOptions="Center">
+                        <Image x:Name="previewImagem" HeightRequest="150" WidthRequest="150"/>
+                    </Frame>
                     <!-- Botões -->
                     <Button Text="Adicionar Produto +"
                          Clicked="AdicionarProduto_Clicked"

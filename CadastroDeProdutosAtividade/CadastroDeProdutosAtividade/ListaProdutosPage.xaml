@@ -18,7 +18,7 @@
                 FontAttributes="Bold"
                 TextColor="#c9345c"
                 HorizontalOptions="Center"
-                   Padding="20"
+                   Padding="10"
                 Margin="0,0,0,10"/>
 
             <Picker
@@ -36,6 +36,13 @@
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
+            
+            <!--Resumo da lista-->
+            <Label x:Name="resumoLabel" FontSize="16" FontAttributes="Bold" Margin="1" HorizontalOptions="Center" TextColor="#c9345c"/>
+
+            <!--produtos vencidos-->
+            <Label x:Name="alertaLabel" TextColor="Red" FontAttributes="Bold" Margin="1" HorizontalOptions="Center"/>
+
             <!-- Lista -->
             <ListView x:Name="produtosListView"
                    HasUnevenRows="True"
@@ -52,7 +59,14 @@
                                 Margin="0,5"
                                 HasShadow="True"
                                 BorderColor="#c9345c">
-                                <VerticalStackLayout Spacing="5">
+
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <VerticalStackLayout Spacing="5">
                                     <Label Text="{Binding Nome}"
                                         FontAttributes="Bold"
                                         FontSize="18"
@@ -91,7 +105,23 @@
                                     <Label Text="{Binding Categoria}"
                                         FontSize="13"
                                         TextColor="#444"/>
-                                </VerticalStackLayout>
+
+                                        <Label Text="Foto:"
+                                             FontAttributes="Bold"
+                                             FontSize="13"
+                                             TextColor="#666"/>     
+                                        <Image Source="{Binding CaminhoImagem}" HeightRequest="150" WidthRequest="150"/>
+
+                                        <Button Text="Remover 🗑"
+                                            BackgroundColor="#c9345c"
+                                            TextColor="White"
+                                            CornerRadius="10"
+                                            WidthRequest="150"
+                                            HorizontalOptions="Center"
+                                            Clicked="Remover_Clicked"
+                                            BindingContext="{Binding .}"/><!--Esse binding q faz o btn saber o produto, ele se liga ao produto do card-->
+                                    </VerticalStackLayout>
+                                </Grid>
                             </Frame>
                         </ViewCell>
                     </DataTemplate>
@@ -105,6 +135,7 @@
      CornerRadius="10"
      WidthRequest="250"
      HeightRequest="45"
+     HorizontalOptions="Center"
      Clicked="Voltar_Clicked"
      Margin="0,20,0,0"/>
 
