@@ -36,7 +36,7 @@
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
-            
+
             <!--Resumo da lista-->
             <Label x:Name="resumoLabel" FontSize="16" FontAttributes="Bold" Margin="1" HorizontalOptions="Center" TextColor="#c9345c"/>
 
@@ -54,76 +54,55 @@
                     <DataTemplate x:DataType="local:Produto">
                         <ViewCell>
                             <Frame BackgroundColor="White"
-                                CornerRadius="15"
-                                Padding="15"
-                                Margin="0,5"
-                                HasShadow="True"
-                                BorderColor="#c9345c">
+           CornerRadius="15"
+           Padding="15"
+           Margin="0,5"
+           HasShadow="True"
+           BorderColor="#c9345c">
 
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
+                                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="15">
+                                    <!-- Informações à esquerda -->
+                                    <VerticalStackLayout Grid.Column="0" Spacing="5">
+                                        <Label Text="{Binding Nome}" FontAttributes="Bold" FontSize="18" TextColor="#333" />
+                                        <Label Text="{Binding PrecoFormatado}" TextColor="Green" FontSize="14" />
 
-                                    <VerticalStackLayout Spacing="5">
-                                    <Label Text="{Binding Nome}"
-                                        FontAttributes="Bold"
-                                        FontSize="18"
-                                        TextColor="#333"/>
+                                        <Label Text="Descrição:" FontAttributes="Bold" FontSize="13" TextColor="#666" />
+                                        <Label Text="{Binding Descricao}" FontSize="13" TextColor="#444" />
 
-                                    <Label Text="{Binding PrecoFormatado}"
-                                        TextColor="Green"
-                                        FontSize="14"/>
+                                        <Label Text="Validade:" FontAttributes="Bold" FontSize="13" TextColor="#666" />
+                                        <Label Text="{Binding ValidadeFormatada}" FontSize="13" TextColor="#444">
+                                            <Label.Triggers>
+                                                <DataTrigger TargetType="Label" Binding="{Binding EstaVencido}" Value="True">
+                                                    <Setter Property="TextColor" Value="Red" />
+                                                </DataTrigger>
+                                            </Label.Triggers>
+                                        </Label>
 
-                                    <Label Text="Descrição:"
-                                        FontAttributes="Bold"
-                                        FontSize="13"
-                                        TextColor="#666"/>
-                                    <Label Text="{Binding Descricao}"
-                                        FontSize="13"
-                                        TextColor="#444"/>
-
-                                    <Label Text="Validade:"
-                                        FontAttributes="Bold"
-                                        FontSize="13"
-                                        TextColor="#666"/>
-
-                                    <Label Text="{Binding ValidadeFormatada}" FontSize="13" TextColor="#444">
-                                        <Label.Triggers>
-                                            <DataTrigger TargetType="Label" Binding="{Binding EstaVencido}" Value="True">
-                                                <Setter Property="TextColor" Value="Red" />
-                                            </DataTrigger>
-                                        </Label.Triggers>
-                                    </Label>
-
-
-                                    <Label Text="Categoria:"
-                                        FontAttributes="Bold"
-                                        FontSize="13"
-                                        TextColor="#666"/>
-                                    <Label Text="{Binding Categoria}"
-                                        FontSize="13"
-                                        TextColor="#444"/>
-
-                                        <Label Text="Foto:"
-                                             FontAttributes="Bold"
-                                             FontSize="13"
-                                             TextColor="#666"/>     
-                                        <Image Source="{Binding CaminhoImagem}" HeightRequest="150" WidthRequest="150"/>
+                                        <Label Text="Categoria:" FontAttributes="Bold" FontSize="13" TextColor="#666" />
+                                        <Label Text="{Binding Categoria}" FontSize="13" TextColor="#444" />
 
                                         <Button Text="Remover 🗑"
-                                            BackgroundColor="#c9345c"
-                                            TextColor="White"
-                                            CornerRadius="10"
-                                            WidthRequest="150"
-                                            HorizontalOptions="Center"
-                                            Clicked="Remover_Clicked"
-                                            BindingContext="{Binding .}"/><!--Esse binding q faz o btn saber o produto, ele se liga ao produto do card-->
+                        BackgroundColor="#c9345c"
+                        TextColor="White"
+                        CornerRadius="10"
+                        WidthRequest="120"
+                        HorizontalOptions="Start"
+                        Clicked="Remover_Clicked"
+                        BindingContext="{Binding .}" />
                                     </VerticalStackLayout>
+
+                                    <!-- Foto à direita -->
+                                    <Image Source="{Binding CaminhoImagem}"
+                   HeightRequest="150"
+                   WidthRequest="150"
+                   Grid.Column="1"
+                   Aspect="AspectFill"
+                   HorizontalOptions="End"
+                   VerticalOptions="Start" />
                                 </Grid>
                             </Frame>
                         </ViewCell>
+
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
