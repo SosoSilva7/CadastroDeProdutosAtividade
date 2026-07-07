@@ -1,4 +1,4 @@
-# 📦 Cadastro de Produtos (desenvolvido no Técnico de Desenvolvimento de Sistemas)
+# 📦 Cadastro de Produtos  (desenvolvido no curso técnico em Desenvolvimento de sistemas)
 
 Aplicativo desenvolvido como atividade acadêmica com o objetivo de praticar o desenvolvimento de aplicações mobile utilizando **.NET MAUI**.
 
